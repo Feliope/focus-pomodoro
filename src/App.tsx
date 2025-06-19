@@ -1,14 +1,14 @@
 import './styles/theme.css';
 import './styles/global.css';
-import { Heading } from './components/Heading';
+import { Heading } from './components/Heading/';
+import { Container } from './components/Container/';
 
 export function App() {
   return (
     <>
-      <Heading>
-        Olá Mundo
-      </Heading>
+      <Container>
+        <Heading>Welcome to Ignite Lab</Heading>
+      </Container>
     </>
   )
 }
-
