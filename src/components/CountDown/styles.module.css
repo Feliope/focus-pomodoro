@@ -1,5 +1,5 @@
 .countDown {
-  font-size: clamp(8rem, 25vw, 10rem);
+  font-size: clamp(8rem, 25vw, 12rem);
   font-weight: bold;
   text-align: center;
   line-height: 1;
