@@ -24,10 +24,10 @@
 
 .play {
   background: var(--primary);
-  color: var(--text-over-error);
+  color: var(--text-over-primary);
 }
 
 .stop {
   background: var(--gray-400);
-  color: var(--text-over-error);
+  color: var(--text-over-primary);
 }
