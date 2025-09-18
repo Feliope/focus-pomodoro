@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
+import { getNextCycleType } from '../../utils/getNextCycleType';
+import { formatedSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
 import { Input } from '../Input';
 import { Cycles } from '../Cycles';
@@ -10,7 +12,6 @@ import { Button } from '../Button';
 import { PlayCircleIcon } from 'lucide-react';
 
 import styles from './styles.module.css';
-import { getNextCycleType } from '../../utils/getNextCycleType';
 
 export function MainForm() {
   const { state, setState } = useTaskContext();
@@ -50,7 +51,7 @@ export function MainForm() {
         activeTask: newTask,
         currentCycle: nextCycle,
         secondsRemaining,
-        formattedSecondsRemaining: '00:00',
+        formattedSecondsRemaining: formatedSecondsToMinutes(secondsRemaining),
         tasks: [...prevState.tasks, newTask],
       }
     })
