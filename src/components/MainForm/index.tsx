@@ -1,15 +1,15 @@
 import { useRef } from 'react';
-import type { TaskModel } from '../../models/TaskModel';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
+import type { TaskModel } from '../../models/TaskModel';
+import { formatedSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
-import { formatedSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 
-import { Input } from '../Input';
-import { Cycles } from '../Cycles';
 import { Button } from '../Button';
+import { Cycles } from '../Cycles';
+import { Input } from '../Input';
 
-import { PlayCircleIcon } from 'lucide-react';
+import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
 import styles from './styles.module.css';
 
@@ -22,7 +22,7 @@ export function MainForm() {
 
   function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    
+
     if (taskNameInput.current === null) return;
 
     const taskName = taskNameInput.current.value.trim();
@@ -38,7 +38,7 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptDate: null,
-      duration: state.config[ nextCycleType ],
+      duration: state.config[nextCycleType],
       type: nextCycleType
     };
 
@@ -79,12 +79,24 @@ export function MainForm() {
           <Cycles />
         </div>
       )}
-      
+
       <div className={styles.formRow}>
-        <Button
-          icon={<PlayCircleIcon />}
-          color='play'
-        />
+        {!state.activeTask ? (
+          <Button
+            aria-label='Iniciar nova tarefa'
+            title='Iniciar nova tarefa'
+            icon={<PlayCircleIcon />}
+            type='submit'
+            color='play'
+          />
+        ) : (
+          <Button
+            aria-label='Parar tarefa em andamento'
+            title='Parar tarefa em andamento'
+            icon={<StopCircleIcon />}
+            color='stop'
+          />
+        )}
       </div>
     </form>
   )
