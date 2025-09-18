@@ -66,6 +66,7 @@ export function MainForm() {
           labelText='Nome do ciclo'
           placeholder='Dê um nome para o ciclo'
           ref={taskNameInput}
+          disabled={!!state.activeTask}
         />
       </div>
 
@@ -79,7 +80,6 @@ export function MainForm() {
         </div>
       )}
       
-
       <div className={styles.formRow}>
         <Button
           icon={<PlayCircleIcon />}
