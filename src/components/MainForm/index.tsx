@@ -57,6 +57,17 @@ export function MainForm() {
     })
   }
 
+  function handleInterruptTask() {
+    setState(prevState => {
+      return {
+        ...prevState,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+      };
+    });
+  }
+
   return (
     <form onSubmit={handleCreateNewTask} className={styles.form} action="">
       <div className={styles.formRow}>
@@ -88,13 +99,17 @@ export function MainForm() {
             icon={<PlayCircleIcon />}
             type='submit'
             color='play'
+            key='button_submit'
           />
         ) : (
           <Button
             aria-label='Parar tarefa em andamento'
             title='Parar tarefa em andamento'
             icon={<StopCircleIcon />}
+            type='button'
             color='stop'
+            onClick={handleInterruptTask}
+            key='button_interrupt'
           />
         )}
       </div>
