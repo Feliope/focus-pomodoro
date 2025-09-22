@@ -12,6 +12,7 @@ import { Input } from '../Input';
 import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
 import styles from './styles.module.css';
+import { Tips } from '../Tips';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -63,7 +64,7 @@ export function MainForm() {
       </div>
 
       <div className={styles.formRow}>
-        <p>Lorem ipsum dolor sit amet.</p>
+        {Tips(state, nextCycleType)}
       </div>
 
       {state.currentCycle > 0 && (
