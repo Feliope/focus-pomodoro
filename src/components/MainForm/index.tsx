@@ -1,18 +1,18 @@
 import { useRef } from 'react';
+import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import type { TaskModel } from '../../models/TaskModel';
-import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 
 import { Button } from '../Button';
 import { Cycles } from '../Cycles';
 import { Input } from '../Input';
+import { Tips } from '../Tips';
 
 import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
 import styles from './styles.module.css';
-import { Tips } from '../Tips';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -43,11 +43,12 @@ export function MainForm() {
       type: nextCycleType
     };
 
-    dispatch({type: TaskActionTypes.START_TASK, payload: newTask})
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask })
+
   }
 
   function handleInterruptTask() {
-    dispatch({type: TaskActionTypes.INTERRUPT_TASK})
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK })
   }
 
   return (
