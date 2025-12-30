@@ -37,7 +37,7 @@ export function Menu() {
       </RouterLink>
 
       <RouterLink className={styles.menuLink}
-        href="#"
+        href="/history/"
         aria-label='Ver Histórico'
         title='Histórico'
       >
