@@ -31,3 +31,8 @@
   background: var(--error);
   color: var(--text-over-primary-dark);
 }
+
+.confirm {
+  background: var(--success);
+  color: var(--text-over-primary-dark);
+}

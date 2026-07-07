@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 
 type ButtonProps = {
   icon: React.ReactNode;
-  color?: 'play' | 'stop';
+  color?: 'play' | 'stop' | 'confirm';
 } & React.ComponentProps<'button'>;
 
 export function Button ({ icon, color = 'play',  ...props }: ButtonProps) {
