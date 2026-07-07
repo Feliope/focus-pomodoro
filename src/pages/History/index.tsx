@@ -9,11 +9,13 @@ import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTaskOptions } from '../../utils/sortTasks';
 import styles from './styles.module.css';
+import { toastifyAdapter } from '../../adapter/toastifyAdapter';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 
 export function History() {
   const { state, dispatch } = useTaskContext();
+  const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const hasTasks = state.tasks.length > 0;
 
 
@@ -36,6 +38,20 @@ export function History() {
     }))
   }, [state.tasks]);
 
+  useEffect(() => {
+    if (!confirmClearHistory) return;
+
+    setConfirmClearHistory(false);
+
+    dispatch({ type: TaskActionTypes.RESET_TASK });
+  }, [confirmClearHistory, dispatch]);
+
+  useEffect(() => {
+    return () => {
+      toastifyAdapter.dissmiss();
+    };
+  }, []);
+
   function handleSortTasks({ field }: Pick<SortTaskOptions, 'field'>) {
     const newDirection = sortTasksOptions.direction === 'desc' ? 'asc' : 'desc';
 
@@ -51,9 +67,10 @@ export function History() {
   }
 
   function handleResetHistory() {
-    if(!confirm('Tem certeza que deseja apagar todo o histórico?')) return
-
-    dispatch({ type: TaskActionTypes.RESET_TASK });
+    toastifyAdapter.dissmiss();
+    toastifyAdapter.confirm('Tem certeza que deseja apagar todo o histórico?', confirmation => {
+      setConfirmClearHistory(confirmation);
+    })
   }
 
   return (
