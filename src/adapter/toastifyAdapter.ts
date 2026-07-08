@@ -7,7 +7,7 @@ export const toastifyAdapter = {
   warn: (msg: string) => toast.warn(msg),
   warning: (msg: string) => toast.warning(msg),
   info: (msg: string) => toast.info(msg),
-  dissmiss: () => toast.dismiss(),
+  dismiss: () => toast.dismiss(),
   confirm: (data: string, onClosing: (confirmation: boolean) => void) => {
     toast(Dialog, {
       data,
