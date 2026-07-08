@@ -3,8 +3,13 @@ import { Container } from '../../components/Container';
 import { GenericHtml } from '../../components/GenericHtml';
 import { Heading } from '../../components/Heading';
 import { RouterLink } from '../../components/RouterLink';
+import { useEffect } from 'react';
 
 export function AboutPomodoro() {
+  useEffect(() => {
+    document.title = 'Sobre a Técnica Pomodoro | Focus Pomodoro';
+  },[])
+
   return (
     <MainTemplate>
       <Container>
@@ -37,7 +42,7 @@ export function AboutPomodoro() {
           </ul>
 
           <h2>
-            Mas no <strong>Chronos Pomodoro</strong> tem um diferencial 🚀
+            Mas no <strong>Focus Pomodoro</strong> tem um diferencial 🚀
           </h2>
 
           <p>
@@ -100,7 +105,7 @@ export function AboutPomodoro() {
             evolução ao longo do tempo.
           </p>
 
-          <h2>Por que usar o Chronos Pomodoro?</h2>
+          <h2>Por que usar o Focus Pomodoro?</h2>
           <ul>
             <li>✅ Organize seu foco com clareza.</li>
             <li>✅ Trabalhe e descanse na medida certa.</li>

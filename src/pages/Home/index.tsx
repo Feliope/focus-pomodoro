@@ -2,8 +2,14 @@ import { MainTemplate } from '../../templates/MainTemplate';
 import { Container } from '../../components/Container';
 import { CountDown } from '../../components/CountDown';
 import { MainForm } from '../../components/MainForm';
+import { useEffect } from 'react';
 
 export function Home() {
+
+  useEffect(() => {
+      document.title = 'Focus Pomodoro';
+  }, []);
+  
   return (
     <MainTemplate>
       <Container>

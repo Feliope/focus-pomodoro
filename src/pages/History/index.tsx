@@ -39,6 +39,10 @@ export function History() {
   }, [state.tasks]);
 
   useEffect(() => {
+    document.title = 'Histórico de Tarefas | Focus Pomodoro';
+  }, []);
+
+  useEffect(() => {
     if (!confirmClearHistory) return;
 
     setConfirmClearHistory(false);
@@ -48,7 +52,7 @@ export function History() {
 
   useEffect(() => {
     return () => {
-      toastifyAdapter.dissmiss();
+      toastifyAdapter.dismiss();
     };
   }, []);
 
@@ -67,7 +71,7 @@ export function History() {
   }
 
   function handleResetHistory() {
-    toastifyAdapter.dissmiss();
+    toastifyAdapter.dismiss();
     toastifyAdapter.confirm('Tem certeza que deseja apagar todo o histórico?', confirmation => {
       setConfirmClearHistory(confirmation);
     })
